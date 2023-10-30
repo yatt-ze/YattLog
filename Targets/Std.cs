@@ -32,11 +32,14 @@ namespace YattLog.Targets
 
         private void writeToStd(ConsoleColor color, LogLevel level, string message)
         {
-            Console.Write("[");
-            Console.ForegroundColor = color;
-            Console.Write(level.ToString().ToUpper());
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write($"] {message}\n");
+            lock (_lock)
+            {
+                Console.Write("[");
+                Console.ForegroundColor = color;
+                Console.Write(level.ToString().ToUpper());
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write($"] {message}\n");
+            }
         }
     }
 }
