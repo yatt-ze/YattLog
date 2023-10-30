@@ -4,6 +4,7 @@
     {
         None,
         Std,
+        Console,
         File
     }
 }

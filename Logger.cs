@@ -1,12 +1,11 @@
 ﻿using YattLog.Configs;
-using YattLog.Targets;
 
 namespace YattLog
 {
     public class Logger
     {
         private Config _config;
-        private BaseLog _logger;
+        private Targets.BaseLog _logger;
 
         public Logger(Config? config = null)
         {
@@ -15,6 +14,7 @@ namespace YattLog
             switch (_config.Target)
             {
                 case LogTarget.Std:
+                case LogTarget.Console:
                     _logger = new Targets.Std();
                     break;
 
